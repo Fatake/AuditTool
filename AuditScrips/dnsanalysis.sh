@@ -1,6 +1,4 @@
 #!/bin/bash
-source utils.sh
-
 # <----------------------- DNS Recon ----------------------->
 echo -e "\n${blueColour}[*]${endColour} Starting ${purpleColour}dnsrecon${endColour}"
 

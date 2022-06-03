@@ -3,6 +3,7 @@
 # Inports
 ##
 source checkTargets.sh
+source utils.sh
 . TermFormat/Colors.sh
 
 function usage () {
@@ -60,8 +61,8 @@ echo -e "\n<--------------------------->\n"
 . AuditScrips/burpproject.sh
 . AuditScrips/scope.sh
 . AuditScrips/dnsanalysis.sh
-exit
 . AuditScrips/tcpipscan.sh
+exit
 . AuditScrips/webscreenshot.sh
 . AuditScrips/scriptkiddie_webscan.sh
 . AuditScrips/nessusscan.sh

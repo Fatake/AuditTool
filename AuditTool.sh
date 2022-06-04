@@ -58,10 +58,11 @@ fi
 
 
 echo -e "\n<--------------------------->\n"
-. AuditScrips/burpproject.sh
+#  Descoment if u have Burp Pro
+#. AuditScrips/burpproject.sh
 . AuditScrips/scope.sh
 . AuditScrips/dnsanalysis.sh
-. AuditScrips/tcpipscan.sh
+#. AuditScrips/tcpipscan.sh
 exit
 . AuditScrips/webscreenshot.sh
 . AuditScrips/scriptkiddie_webscan.sh

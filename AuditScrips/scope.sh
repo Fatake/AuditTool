@@ -1,6 +1,11 @@
 #!/bin/bash
 ##Convert host lists into IP addresses
+: '
+Commands used:
+    $host [target]
+'
 echo -e "\n${greenColour}[*]${endColour} Starting DNS resolutions"
+
 for h in $(cat pentest/targets/domains.txt pentest/targets/subdomains.txt); do 
     host $h
 done > pentest/resolved_hosts.txt

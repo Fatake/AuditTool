@@ -1,27 +1,35 @@
 #!/bin/bash
-# <----------------------- DNS Recon ----------------------->
-echo -e "\n${blueColour}[*]${endColour} Starting ${purpleColour}dnsrecon${endColour}"
+#  Inportart Commands Used
+    #dnsrecon -d [domainTarget] -t [std|axfr|zonewalk|bing] -c [outputFiel].csv
+    #$dnsrecon -d [IP] -t rvl -c [outputfile].cvs
+    
+function dnsrecon_run(){
+    echo -e "\n${blueColour}[*]${endColour} Starting ${purpleColour}dnsrecon${endColour}"
 
-if [ ! -d "pentest/dnsrecon" ]  then
-    run_cmd "mkdir pentest/dnsrecon/"
-fi
-path="$(pwd)/pentest/dnsrecon"
+    dns_path="$(pwd)/pentest/dnsrecon"
 
-for d in $(cat pentest/targets/domains.txt); do 
-    dnsrecon  -d $d --disable_check_bindversion -t std -c $path/${NAME}_dnsreconstdrecon_$d.csv  
-    dnsrecon -d $d -t axfr -c $path/${NAME}_dnsrecon_axfr_$d.csv 
-    dnsrecon -d $d -t zonewalk -c $path/${NAME}_dnsrecon_crt_$d.csv 
-    # dnsrecon -d $d -t bing -c $path/${NAME}_dnsrecon_bing_$d.csv 
-done 
+    if [ ! -d "/pentest/dnsrecon" ]; then
+        run_cmd "mkdir pentest/dnsrecon/"
+    fi
 
-for d in $(cat pentest/targets/ipaddresses.txt); do 
-    dnsrecon-d $d -t rvl -c $path/${NAME}_dnsrecon_rvl_$d.csv
-done 
+    ## dns recon for domains
+    for d in $(cat pentest/targets/domains.txt); do 
+        dnsrecon -d --disable_check_bindversion  $d -t std -c ${dns_path}/${NAME}_dnsrecon_stdrecon_$d.csv
+        dnsrecon -d $d -t axfr -c ${dns_path}/${NAME}_dnsrecon_axfr_$d.csv 
+        dnsrecon -d $d -t zonewalk -c ${dns_path}/${NAME}_dnsrecon_crt_$d.csv 
+        # dnsrecon -d $d -t bing -c ${dns_path}/${NAME}_dnsrecon_bing_$d.csv 
+    done 
 
-for f in $path/${NAME}_dnsrecon_*.csv; do 
-    awk -v d=$(echo ${f} | cut -d "_" -f 4 ) 'NR>1 {print d","$0}' $f
-done | sort -u >> pentest/dnsrecon/${NAME}_dnsrecon_all.txt
-# <----------------------- DNS Recon ----------------------->
+    ## dns regon for IP
+    for d in $(cat pentest/targets/ipaddresses.txt); do 
+        dnsrecon-d $d -t rvl -c $dns_path/${NAME}_dnsrecon_rvl_$d.csv
+    done 
+
+    for f in $dns_path/${NAME}_dnsrecon_*.csv; do 
+        awk -v d=$(echo ${f} | cut -d "_" -f 4 ) 'NR>1 {print d","$0}' $f
+    done | sort -u >> pentest/dnsrecon/${NAME}_dnsrecon_all.txt
+}
+dnsrecon_run
 
 # <----------------------- Dig space ----------------------->
 echo -e "\n${blueColour}[*]${endColour} dig nameservers"
@@ -52,7 +60,6 @@ for d in $(cat pentest/targets/domains.txt); do
     amass enum -norecursive -noalts -d $d >> pentest/foundsubdomains.txt
     
 done 
-
 
 # <----------------------- DNS Brute ----------------------->
 

@@ -3,15 +3,15 @@
 # Inports
 ##
 source checkTargets.sh
+source utils.sh
 . TermFormat/Colors.sh
 
 function usage () {
 	echo -e "\n${greenColour}Usage:\n"
     echo -e "${blueColour}sudo${endColour} ./AuditTool.sh -i            Start necessary files"
-    echo -e "${blueColour}sudo${endColour} ./AuditTool.sh -n [name]     [name] name of proyect\n"
+    echo -e "${blueColour}sudo${endColour} ./AuditTool.sh -n [name]     Start Project with [name]\n"
 	echo -e "${blueColour}sudo${endColour} ./AuditTool.sh -h            Show this Help menu"
 }
-
 
 # If there are no arguments, show usage
 if [[ ${#} -eq 0 ]]; then
@@ -23,12 +23,12 @@ fi
 while getopts ":hn:i" opt; do
 	case ${opt} in	
 		i)
-			echo -e "${greenColour}[i]${endColour} Init Project" >&2
+			echo -e "${yellowColour}[*]${endColour} Init Project\n"
 			createFiles
 			;;
 		n)
 			checkFiles
-			echo -e "${blueColour}[i]${endColour} Pentest project name:\t $OPTARG" >&2
+			echo -e "${blueColour}[i]${endColour} Pentest project: ${yellowColour}$OPTARG${endColour}"
 			NAME="$OPTARG"
 			f_name=true
 			;;
@@ -56,10 +56,14 @@ if [ "$EUID" -ne 0 ] ; then
 	exit 1
 fi
 
-. AuditScrips/burpproject.sh
+
+echo -e "\n<--------------------------->\n"
+#  Descoment if u have Burp Pro
+#. AuditScrips/burpproject.sh
 . AuditScrips/scope.sh
 . AuditScrips/dnsanalysis.sh
-. AuditScrips/tcpipscan.sh
+#. AuditScrips/tcpipscan.sh
+exit
 . AuditScrips/webscreenshot.sh
 . AuditScrips/scriptkiddie_webscan.sh
 . AuditScrips/nessusscan.sh

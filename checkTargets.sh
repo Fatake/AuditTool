@@ -49,7 +49,7 @@ function createFiles(){
     fi
 
     if [[ domains -ne 1 || subdomains -ne 1 || ipaddresses -ne 1 || urls -ne 1 ]]; then
-        echo -e "${blueColour}[i]${endColour} I will Create following files in pentest/targets/ to begin"
+        echo -e "${blueColour}[i]${endColour} I will Create following files in ${purpleColour}pentest/targets/${endColour} to begin:"
         
         if [[ domains -ne 1 ]]; then # Create Domains File
             echo -e "${greenColour}[+]${endColour} domains.txt"
@@ -68,6 +68,7 @@ function createFiles(){
             run_cmd "touch pentest/targets/urls.txt"
         fi
 
+        run_cmd "chown -R 1000:1000 pentest/"
         echo -e "\n${blueColour}[i]${endColour} Add ${greenColour}Targets${endColour} To files"
         echo -e "${endColour}"; exit 1
     fi
@@ -79,7 +80,7 @@ function checkFiles(){
 
     if [ ! -d "pentest" ] 
     then
-        echo -e "${redColour}[!]${endColour} Directory pentest not exist" 
+        echo -e "${redColour}[!]${endColour} Directory ${purpleColour}pentest/${endColour} not exist" 
         echo -e "${greenColour}[i]${endColour} Try \"AuditTool.sh  -i\" first"
         run_cmd "bash AuditTool.sh -h"
         echo -e "${endColour}"; exit 1

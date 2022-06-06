@@ -2,8 +2,8 @@ import argparse
 
 def GetArgs():
     parser = argparse.ArgumentParser(description='''
-    Audit Tool are a commpile of  scripts to automate 
-    repetitive tasks dunring a pentest.
+    Audit Tool are mainly bash scripts to automate repetitive 
+    tasks dunring a pentest
     ''')
 
     group = parser.add_mutually_exclusive_group(required=True)

@@ -12,5 +12,5 @@ if [ ! -d "${PROJECT_PATH}/autonmap" ]; then
 fi
 
 sudo ./autonmap/autonmap.sh -o "${NAME}" -t "-iL ${PROJECT_PATH}/Pentest_${NAME}/targets/allipaddreses.txt"
-mv autonmap_${NAME} ${PROJECT_PATH}/Pentest_${NAME}
-python3 ${PROJECT_PATH}/AuditScrips/ParserNMAP/parse_nmap.py -i ${PROJECT_PATH}/Pentest_${NAME}/autonmap_${NAME}/${NAME}_syn_scan.xml -o Pentest_${NAME}/autonmap_${NAME}/nmap_parsed
+mv autonmap_* ${PROJECT_PATH}/Pentest_${NAME}
+python3 ${PROJECT_PATH}/AuditScrips/ParserNMAP/parse_nmap.py -i Pentest_${NAME}/autonmap_${NAME}/${NAME}_syn_scan.xml -o Pentest_${NAME}/autonmap_${NAME}/nmap_parsed

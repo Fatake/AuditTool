@@ -25,6 +25,11 @@ function logo () {
     echo -e "${redColour}\n"
     echo -e "    ___             ___ __      ______            __\n   /   | __  ______/ (_) /_    /_  __/___  ____  / /\n  / /| |/ / / / __  / / __/_____/ / / __ \/ __ \/ / \n / ___ / /_/ / /_/ / / /_/_____/ / / /_/ / /_/ / /  \n/_/  |_\__,_/\__,_/_/\__/     /_/  \____/\____/_/   \n"
     echo -e "${endColour}\n"
+
+    echo -e "Made with love by:"
+    echo -e "${greenColour}[+]${endColour} @cthulhu897"
+    echo -e "${greenColour}[+]${endColour} @rossJxd"
+    echo -e "${greenColour}[+]${endColour} @Fatake"
 }
 
 ##

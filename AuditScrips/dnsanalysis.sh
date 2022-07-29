@@ -59,19 +59,16 @@ done
 cat ${TOOL_PATH}/cewl_dict_*.txt |  iconv -f utf8 -t ascii//TRANSLIT  | awk -F ',' '{a[$1] += $2} END{for (i in a) print i, a[i]}' | sort -nr -t " " -k 2,2 >> ${CWORLD_TOOL_PATH}/cewl_words_num.txt
 head -n 1000 ${TOOL_PATH}/cewl_words_num.txt | cut -d "," -f 1 >> ${TOOL_PATH}/custom_dictionary.lst
 
-exit 1
-
 # <----------------------- amass, subfinder assetfinder ---------------------->
+echo -e "\n${yellowColour}Starting ${purpleColour}amass, subfinder${endColour}"
 for d in $(cat Pentest_${NAME}/targets/domains.txt); do 
     subfinder -d $d >> Pentest_${NAME}/foundsubdomains.txt
     assetfinder -subs-only $d >> Pentest_${NAME}/foundsubdomains.txt
     amass enum -norecursive -noalts -d $d >> Pentest_${NAME}/foundsubdomains.txt
-    
 done 
 
 # <----------------------- DNS Brute ----------------------->
-
-echo -e "\n${blueColour}[*]${endColour} DNS brute force${endColour}"
+echo -e "\n${yellowColour}Starting ${purpleColour}DNS brute force${endColour}"
 for d in $(cat Pentest_${NAME}/targets/domains.txt); do
     amass enum -brute -w AuditScrips/WorldList/DNS_plussFinancial.dic-d $d >> Pentest_${NAME}/foundsubdomains.txt
     #amass enum -brute -w Pentest_${NAME}/custom_dictionary_${NAME}.lst -d $d >> Pentest_${NAME}/foundsubdomains.txt
@@ -90,5 +87,3 @@ for h in $(cat Pentest_${NAME}/targets/subdomains.txt); do
 done >> Pentest_${NAME}/targets/all_resolved_subdomains.txt
 
 cat Pentest_${NAME}/targets/all_resolved_subdomains.txt | grep "has address" | sed 's/ has address /\t/g' | sort -u | cut -f2 | sort -u > Pentest_${NAME}/all_ipv4addreses.txt
-
-chown -R 1000:1000 Pentest_${NAME}/

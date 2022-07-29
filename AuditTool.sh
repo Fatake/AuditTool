@@ -46,10 +46,10 @@ listTargets
 echo -e "\n${yellowColour}<------------ Let's Pentest ------------>${endColour}"
 
 . AuditScrips/scope.sh
-. AuditScrips/dnsanalysis.sh
+#. AuditScrips/dnsanalysis.sh
+. AuditScrips/tcpipscan.sh
 run_cmd "chown -R 1000:1000 Pentest_${NAME}/"
 exit
-. AuditScrips/tcpipscan.sh
 #  Descoment if u have Burp Pro
 #. AuditScrips/burpproject.sh
 . AuditScrips/webscreenshot.sh

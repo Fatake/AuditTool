@@ -1,21 +1,15 @@
 #!/bin/bash
+PROJECT_PATH="$(pwd)"
 
 echo -e "\n${yellowColour}Starting ${purpleColour}auto nmap${endColour}"
-COMMAND="git clone --recursive https://github.com/Fatake/autonmap.git"
-echo -e "${blueColour}[*]${endColour}Dowloading ${COMMAND}"
 
-run_cmd "${COMMAND}"
-
-TOOL_PATH="$(pwd)/Pentest_${NAME}/nmap"
-if [ ! -d "${TOOL_PATH}" ]; then
-    echo -e "${greenColour}[+]${endColour} Creating  dir ${TOOL_PATH}/"
-    run_cmd "mkdir ${TOOL_PATH}"
+## Dowloadling autonmap tool
+if [ ! -d "${PROJECT_PATH}/autonmap" ]; then
+    COMMAND="git clone --recursive https://github.com/Fatake/autonmap.git"
+    echo -e "${blueColour}[*]${endColour}Dowloading ${purpleColour}${COMMAND}${endColour}"
+    run_cmd "${COMMAND}"
 fi
 
-echo -e "\n${yellowColour}Starting ${purpleColour}autonmap script${endColour}"
-$(pwd)/autonmap/autonmap.sh -o Pentest_${NAME}/nmap/"${NAME}" -t "-iL Pentest_${NAME}/allipaddreses.txt"
-
-# Cambiar biblioteca
-##python3 AuditScrips/ParserNMAP/parse_nmap.py -i pentest/nmap/autonmap_${NAME}_openports.xml -o Pentest_${NAME}/nmap/nmap_parsed
-
-rm -rf autonmap/
+sudo ./autonmap/autonmap.sh -o "${NAME}" -t "-iL ${PROJECT_PATH}/Pentest_${NAME}/targets/allipaddreses.txt"
+mv autonmap_${NAME} ${PROJECT_PATH}/Pentest_${NAME}
+python3 ${PROJECT_PATH}/AuditScrips/ParserNMAP/parse_nmap.py -i ${PROJECT_PATH}/Pentest_${NAME}/autonmap_${NAME}/${NAME}_syn_scan.xml -o Pentest_${NAME}/autonmap_${NAME}/nmap_parsed

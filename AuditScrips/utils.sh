@@ -82,11 +82,9 @@ function checkFiles(){
         itsnew=1
     fi
 
-
+    run_cmd "chown -R 1000:1000 Pentest_${NAME}/"
     if [ $itsnew -eq 1 ];then
         echo -e "\n${blueColour}[i]${endColour} Please add ${greenColour}Targets${endColour} to the created files to continue"
         read -r -s -p $'Press enter to continue...'
     fi
-
-    run_cmd "chown -R 1000:1000 Pentest_${NAME}/"
 }

@@ -1,13 +1,18 @@
 #!/usr/bin/python3
-
-###########
-# IMPORTS #
-###########
-
 import sys
 import getopt
 import re
-from libnmap.parser import NmapParser
+import os
+try:
+    from libnmap.parser import NmapParser                 
+except:
+    os.system("pip3 install NmapParser")
+    try:
+        from libnmap.parser import NmapParser                             
+    except ImportError:
+        print("NmapParser is requiered, please install it from pip install")
+        sys.exit(1)
+
 
 #############
 # FUNCTIONS #
@@ -157,7 +162,6 @@ def parse_web_servers(files):
         error("Error parsing xml file! %s" % e)
         exit()
 
-
 ########
 # MAIN #
 ########
@@ -191,9 +195,5 @@ def main(argv):
             file_results.write(line+'\n')
             #print (line)
 
-
-
-
-    
 if __name__ == "__main__":
     main(sys.argv[1:])

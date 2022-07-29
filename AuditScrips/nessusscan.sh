@@ -1,11 +1,13 @@
 #!/bin/bash
 
 echo -e "\n${greenColour}[*] Generating Nessus Scan${endColour}"
-
 #Nessus scan on target ip addresses
-source ../conf/nessus.conf
+nessususer="root"
+nessuspassword="Ro0tt0or1!"
+nessusscantemplate="Basic"
+
 nessusscanname=$NAME
-nessustargets=$(cat targets/ipaddresses.txt | sort -u | tr "\n" "," | sed 's/,$/\n/g')
+nessustargets=$(cat Pentest_${NAME}/targets/ipaddresses.txt | sort -u | tr "\n" "," | sed 's/,$/\n/g')
 nessustoken=$(curl -s -k -X POST -H 'Content-Type: application/json' -d "{\"username\":\"${nessususer}\",\"password\":\"${nessuspassword}\"}" "https://127.0.0.1:8834/session" -x "http://127.0.0.1:8080/" | jq -r '.token')
 nessusapikey=$(curl -s -k -X GET -H 'Content-Type: application/json' "https://127.0.0.1:8834/nessus6.js?v=$(date +%s)" |  grep -Eo "getApiToken\"\,value\:function\(\){return(\".*?\")}}," | cut -d '"' -f3 )
 

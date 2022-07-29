@@ -14,7 +14,7 @@ function dnsrecon_run(){
 
     ## dns recon for domains
     for d in $(cat pentest/targets/domains.txt); do 
-        dnsrecon -d --disable_check_bindversion  $d -t std -c ${dns_path}/${NAME}_dnsrecon_stdrecon_$d.csv
+        dnsrecon -d $d --disable_check_bindversion -t std -c ${dns_path}/${NAME}_dnsrecon_stdrecon_$d.csv
         dnsrecon -d $d -t axfr -c ${dns_path}/${NAME}_dnsrecon_axfr_$d.csv 
         dnsrecon -d $d -t zonewalk -c ${dns_path}/${NAME}_dnsrecon_crt_$d.csv 
         # dnsrecon -d $d -t bing -c ${dns_path}/${NAME}_dnsrecon_bing_$d.csv 

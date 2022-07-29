@@ -22,5 +22,3 @@ cat pentest/resolved_hosts.txt pentest/resolved_ptrs.txt
 
 echo -e "\n${yellowColour}Unique IP addresses${endColour}"
 cat pentest/hosts2ipv4addreses.txt pentest/hosts2ipv6addreses.txt
-
-chown -R 1000:1000 pentest/

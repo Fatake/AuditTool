@@ -1,8 +1,6 @@
-. TermFormat/Colors.sh
 source utils.sh
 
-if [ ! -d "pentest" ] 
-then
+if [ ! -d "pentest" ]; then
     run_cmd "mkdir pentest/"
     run_cmd "mkdir pentest/targets/"
     run_cmd "chown -R 1000:1000 pentest/"

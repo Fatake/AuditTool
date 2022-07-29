@@ -6,29 +6,29 @@
 
 # <----------------------- dnsrecon space ----------------------->
 echo -e "\n${yellowColour}Starting ${purpleColour}dnsrecon${endColour}"
-PATH="Pentest_${NAME}/dnsrecon"
+TOOL_PATH="$(pwd)/Pentest_${NAME}/dnsrecon"
 
-if [ ! -d "Pentest_${NAME}/dnsrecon" ]; then
-    echo -e "${greenColour}[+]${endColour} Creating  dir ${PATH}/"
-    run_cmd "mkdir Pentest_${NAME}/dnsrecon"
+if [ ! -d "${TOOL_PATH}" ]; then
+    echo -e "${greenColour}[+]${endColour} Creating  dir ${TOOL_PATH}/"
+    run_cmd "mkdir ${TOOL_PATH}"
 fi
 
 ## dnsrecon for domains
 for d in $(cat Pentest_${NAME}/targets/domains.txt); do 
-    dnsrecon -d $d --disable_check_bindversion -t std -c ${PATH}/dnsrecon_stdrecon_$d.csv
-    dnsrecon -d $d -t axfr -c ${PATH}/dnsrecon_axfr_$d.csv 
-    dnsrecon -d $d -t zonewalk -c ${PATH}/dnsrecon_crt_$d.csv 
-    # dnsrecon -d $d -t bing -c ${PATH}/dnsrecon_bing_$d.csv 
+    dnsrecon -d $d --disable_check_bindversion -t std -c ${TOOL_PATH}/dnsrecon_stdrecon_$d.csv
+    dnsrecon -d $d -t axfr -c ${TOOL_PATH}/dnsrecon_axfr_$d.csv 
+    dnsrecon -d $d -t zonewalk -c ${TOOL_PATH}/dnsrecon_crt_$d.csv 
+    # dnsrecon -d $d -t bing -c ${TOOL_PATH}/dnsrecon_bing_$d.csv 
 done 
 
 ## dnsrecon reverse IP
-for d in $(cat Pentest_${NAME}/targets/ipaddresses.txt Pentest_${NAME}/targets/hosts2ipv4addreses.txt); do 
-    dnsrecon -d $d -t rvl -c $PATH/dnsrecon_rvl_$d.csv
+for d in $(cat Pentest_${NAME}/targets/allipaddreses.txt); do 
+    dnsrecon -d $d -t rvl -c $TOOL_PATH/dnsrecon_rvl_$d.csv
 done 
 
-for f in $PATH/dnsrecon_*.csv; do 
+for f in $TOOL_PATH/dnsrecon_*.csv; do 
     awk -v d=$(echo ${f} | cut -d "_" -f 4 ) 'NR>1 {print d","$0}' $f
-done | sort -u >> $PATH/dnsrecon_all.txt
+done | sort -u >> $TOOL_PATH/dnsrecon_all.txt
 
 
 # <----------------------- Dig space ----------------------->
@@ -46,18 +46,18 @@ done  >> Pentest_${NAME}/axfr.txt
 # <----------------------- Custom word list ----------------------->
 echo -e "\n${yellowColour}Starting ${purpleColour}cwel Custom wordlist${endColour}"
 
-PATH="$(pwd)/Pentest_${NAME}/customWorldList"
+TOOL_PATH="$(pwd)/Pentest_${NAME}/customWorldList"
 
-if [ ! -d "${PATH}" ]; then
-    echo -e "${greenColour}[+]${endColour} Creating  dir ${PATH}/"
-    run_cmd "mkdir ${PATH}"
+if [ ! -d "${TOOL_PATH}" ]; then
+    echo -e "${greenColour}[+]${endColour} Creating  dir ${TOOL_PATH}/"
+    run_cmd "mkdir ${TOOL_PATH}"
 fi
 
 for d in $(cat Pentest_${NAME}/targets/domains.txt); do 
-    cewl $d -d 2 -m 4 --email_file ${PATH}/cewl_emails_${d}.txt -c -w ${PATH}//cewl_dict_${d}.txt
+    cewl $d -d 2 -m 4 --email_file ${TOOL_PATH}/cewl_emails_${d}.txt -c -w ${TOOL_PATH}//cewl_dict_${d}.txt
 done 
-cat ${PATH}/cewl_dict_*.txt |  iconv -f utf8 -t ascii//TRANSLIT  | awk -F ',' '{a[$1] += $2} END{for (i in a) print i, a[i]}' | sort -nr -t " " -k 2,2 >> ${CWORLD_PATH}/cewl_words_num.txt
-head -n 1000 ${PATH}/cewl_words_num.txt | cut -d "," -f 1 >> ${PATH}/custom_dictionary.lst
+cat ${TOOL_PATH}/cewl_dict_*.txt |  iconv -f utf8 -t ascii//TRANSLIT  | awk -F ',' '{a[$1] += $2} END{for (i in a) print i, a[i]}' | sort -nr -t " " -k 2,2 >> ${CWORLD_TOOL_PATH}/cewl_words_num.txt
+head -n 1000 ${TOOL_PATH}/cewl_words_num.txt | cut -d "," -f 1 >> ${TOOL_PATH}/custom_dictionary.lst
 
 exit 1
 

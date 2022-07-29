@@ -3,6 +3,8 @@ import sys
 import getopt
 import re
 import os
+from libnmap.parser import NmapParser
+'''
 try:
     from libnmap.parser import NmapParser                 
 except:
@@ -12,6 +14,7 @@ except:
     except ImportError:
         print("NmapParser is requiered, please install it from pip install")
         sys.exit(1)
+'''
 
 
 #############

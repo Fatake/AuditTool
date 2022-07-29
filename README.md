@@ -1,6 +1,6 @@
 # Audit Tool
 
-![](assets/20220606_104404_Baner.png)
+![](assets/2022-07-28_20-39.png)
 
 ## Function
 
@@ -17,9 +17,8 @@ Audit Tool are mainly bash scripts to automate repetitive tasks dunring a pentes
 ## Usage
 
 All you need to do is:
-
 ```bash
-sudo bash AuditTools.sh -i
+sudo bash AuditTool.sh -n [NameProject]
 ```
 
 For the first time, the script will create a directory called **pentest**, inside ther whill create other directory called **targets** where you will tipe all targets that yu need to audit:
@@ -28,9 +27,3 @@ For the first time, the script will create a directory called **pentest**, insid
 - ipaddresses.txt
 - subdomains.txt
 - urls.txt
-
-And run the script with:
-
-```bash
-sudo bash AuditTool.sh -n [NameProject]
-```

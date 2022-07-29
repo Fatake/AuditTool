@@ -12,11 +12,7 @@ endColour="\033[0m\e[0m"
 
 # This function will help standardize running a command
 function run_cmd () {
-    # Syntaxt will be: run_cmd "[COMMAND]"
-    command="$1"
-    # we just assume stderr is a permission thing and give a generic
-    # failure message.
-    /bin/bash -c "$command" 2>/dev/null
+    /bin/bash -c "$1" 2>/dev/null
 }
 
 function usage () {

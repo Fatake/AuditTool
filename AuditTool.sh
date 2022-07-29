@@ -18,7 +18,6 @@ while getopts ":hn:" opt; do
 	case ${opt} in	
 		# -n to create a new pentesting NAME Project
 		n)
-			echo -e "${blueColour}[i]${endColour} Pentest project name: ${yellowColour}$OPTARG${endColour}"
 			NAME="$OPTARG"
 			f_name=true
 			;;
@@ -39,17 +38,19 @@ while getopts ":hn:" opt; do
 	esac
 done
 echo -e "${endColour}\n"
-echo -e "\t${yellowColour}------- Init Project -------${endColour}"
+echo -e "${yellowColour}<------------ Init Project ------------>${endColour}"
+echo -e "${blueColour}[i]${endColour} Pentest project name: ${yellowColour}$NAME${endColour}"
 checkFiles
 listTargets
+
+echo -e "\n${yellowColour}<------------ Let's Pentest ------------>${endColour}"
+
+. AuditScrips/scope.sh
 exit
-echo -e "\n<--------------------------->\n"
-#. AuditScrips/scope.sh
 . AuditScrips/dnsanalysis.sh
 . AuditScrips/tcpipscan.sh
 #  Descoment if u have Burp Pro
 #. AuditScrips/burpproject.sh
-
 . AuditScrips/webscreenshot.sh
 . AuditScrips/scriptkiddie_webscan.sh
 . AuditScrips/nessusscan.sh

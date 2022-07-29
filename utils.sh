@@ -36,16 +36,16 @@ function logo () {
 ##
 # 2>/dev/null redirect standar error to /dev/null
 function listTargets () {
-    echo -e "\n\n\t${yellowColour}------- Domains -------${endColour}"
+    echo -e "\n${yellowColour}Domains${endColour}"
     run_cmd "cat Pentest_${NAME}/targets/domains.txt"
 
-    echo -e "\n\n\t${yellowColour}------- Subdomains -------${endColour}"
+    echo -e "\n${yellowColour}Subdomains${endColour}"
     run_cmd "cat Pentest_${NAME}/targets/subdomains.txt"
 
-    echo -e "\n\n\t${yellowColour}------- IP addresse -------${endColour}"
+    echo -e "\n${yellowColour}IP address${endColour}"
     run_cmd "cat Pentest_${NAME}/targets/ipaddresses.txt"
 
-    echo -e "\n\n\t${yellowColour}------- URLS -------${endColour}"
+    echo -e "\n${yellowColour}URLS${endColour}"
     run_cmd "cat Pentest_${NAME}/targets/urls.txt"
 }
 

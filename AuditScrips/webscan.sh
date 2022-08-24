@@ -1,5 +1,18 @@
 #!/bin/bash
 
+echo -e "\n${yellowColour}Starting ${purpleColour}whatweb${endColour}"
+TOOL_PATH="$(pwd)/Pentest_${NAME}/whatweb"
+
+if [ ! -d "${TOOL_PATH}" ]; then
+    echo -e "${greenColour}[+]${endColour} Creating  dir ${TOOL_PATH}/"
+    run_cmd "mkdir ${TOOL_PATH}"
+fi
+
+for d in $(cat Pentest_${NAME}/targets/domains.txt); do 
+    whatweb --log-xml ${TOOL_PATH}/out_${d}.xml -v -a 3 $d
+done 
+
+
 echo -e "${greenColour}\n[*] Taking screenshots of HTTP Services${endColour}"
 
 ## Making files

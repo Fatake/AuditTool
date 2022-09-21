@@ -5,7 +5,7 @@ logo
 
 if [ "$EUID" -ne 0 ] ; then
 	echo -e "\n${redColour}[!]${endColour} Not sudo detected";
-    usage
+	usage
 	exit 1
 fi
 

@@ -21,7 +21,7 @@ REPLAY_PROXY="-replay-proxy http://127.0.0.1:8080"
 THREADS="-t 10"
 
 #Optional
-COOKIES="-b 'visid_incap_1358118=aV3YZIcXTGqCqpFEm5u2JFlPK2MAAAAAQUIPAAAAAAB7dZiNVP+1CefacooTDh4N; JSESSIONID=L7k4jrnpsxhLn0Wf24GngjG8SLvPgJF1MBbRTn481mfpdPDQjP0G!-2056007853; incap_ses_1054_1358118=NMx4cBE6YQwj3p8nfZCgDtRTK2MAAAAAh3JZUrGB7Bk1mSoHEOccJg==; incap_ses_1059_1358118=V0+hZc5RrVfW0BaOBlOyDjNUK2MAAAAA54wBHz4W4nWZva3uAUdUXQ==; incap_ses_1435_1358118=y66nYdwpcjUmiUYyUybqE+tUK2MAAAAAcSZUgFsiiv0foqvSHjvDDA==; incap_ses_1053_1358118=L3kjCb0anFK6yGNWGgKdDtltK2MAAAAA+OLBBGm0QQg0owIQleLn0A=='"
+COOKIES="-b 'Some_some'"
 
 i=1
 echo -e "${greenColour}\n[*] Auto ffuff directories listing${endColour}"

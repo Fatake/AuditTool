@@ -1,6 +1,6 @@
 #!/bin/bash
 #  Inportart Commands Used
-    #dnsrecon -d [domainTarget] -t [std|axfr|zonewalk|bing] -c [outputFiel].csv
+    #    -d [domainTarget] -t [std|axfr|zonewalk|bing] -c [outputFiel].csv
     #dnsrecon -d [IP] -t rvl -c [outputfile].cvs
     #dig
 
@@ -70,7 +70,7 @@ done
 # <----------------------- DNS Brute ----------------------->
 echo -e "\n${yellowColour}Starting ${purpleColour}DNS brute force${endColour}"
 for d in $(cat Pentest_${NAME}/targets/domains.txt); do
-    amass enum -brute -w AuditScrips/WorldList/DNS_plussFinancial.dic-d $d >> Pentest_${NAME}/foundsubdomains.txt
+    amass enum -brute -w AuditScrips/WorldList/DNS_plussFinancial.dic -d $d >> Pentest_${NAME}/foundsubdomains.txt
     #amass enum -brute -w Pentest_${NAME}/custom_dictionary_${NAME}.lst -d $d >> Pentest_${NAME}/foundsubdomains.txt
 
     ## next line dont uncomment, it is only for really special clients 
@@ -78,7 +78,6 @@ for d in $(cat Pentest_${NAME}/targets/domains.txt); do
     ## better to be used whit a lot of open resolvers
     #amass enum -brute -w /opt/rlyeh/dictionaries/DNS_allsubdomains.dic -d $d >> Pentest_${NAME}/foundsubdomains.txt
 done 
-
 
 cat Pentest_${NAME}/foundsubdomains.txt | sort -u > Pentest_${NAME}/subdomains.txt
 

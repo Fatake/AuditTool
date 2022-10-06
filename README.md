@@ -16,7 +16,14 @@ Audit Tool are mainly bash scripts to automate repetitive tasks dunring a pentes
 
 ## Usage
 
+Clone github repository
+
+```bash
+git clone --recursive https://github.com/Fatake/AuditTool.git
+```
+
 All you need to do is:
+
 ```bash
 sudo bash AuditTool.sh -n [NameProject]
 ```

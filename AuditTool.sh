@@ -51,6 +51,5 @@ echo -e "\n${yellowColour}<------------ Let's Pentest ------------>${endColour}"
 #  Descoment if u have Burp Pro
 #. AuditScrips/burpproject.sh
 . AuditScrips/webscan.sh
-. AuditScrips/securityheaders.sh.sh
 . AuditScrips/nessusscan.sh
 run_cmd "chown -R 1000:1000 Pentest_${NAME}/"

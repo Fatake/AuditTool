@@ -32,6 +32,16 @@ function logo () {
     echo -e "${greenColour}[+]${endColour} @Fatake"
 }
 
+
+function makeDirTool(){
+    TOOL_NAME=$1
+    TOOL_PATH="$(pwd)/Pentest_${NAME}/${TOOL_NAME}"
+    if [ ! -d "${TOOL_PATH}" ]; then
+        echo -e "${greenColour}[+]${endColour} Creating  dir ${TOOL_PATH}/"
+        run_cmd "mkdir ${TOOL_PATH}"
+    fi
+}
+
 ##
 # Check Files
 ##

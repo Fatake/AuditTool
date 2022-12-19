@@ -56,7 +56,7 @@ echo -e "\n${yellowColour}<------------ Let's Pentest ------------>${endColour}"
 ##
 # + Web Analisis
 ## 
-#. /opt/AuditTool/AuditScrips/burpproject.sh
+. /opt/AuditTool/AuditScrips/burpproject.sh
 . /opt/AuditTool/AuditScrips/webscan.sh
 
 ##

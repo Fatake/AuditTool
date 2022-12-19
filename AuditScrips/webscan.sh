@@ -1,11 +1,11 @@
 #!/bin/bash
+. /opt/AuditTool/AuditScrips/utils.sh
 
 ##
 ## What WEb
 ##
 echo -e "\n${yellowColour}Starting ${purpleColour}whatweb${endColour}"
 TOOL_PATH="$(pwd)/Pentest_${NAME}/whatweb"
-
 if [ ! -d "${TOOL_PATH}" ]; then
     echo -e "${greenColour}[+]${endColour} Creating  dir ${TOOL_PATH}/"
     run_cmd "mkdir ${TOOL_PATH}"
@@ -19,7 +19,7 @@ do
     COMMAND="whatweb $WW_USERAGENT -v -a 3 ${OPFILE} $d"
     echo -e "kali$ ${COMMAND}"
     echo -e "<------------------------------->\n";
-    eval $COMMAND
+    eval $COMMAND   
     ((i=i+1))
 done 
 
@@ -52,7 +52,8 @@ done;
 ## Taking screenshots from security headers
 ##
 echo -e "\n${greenColour}[*] Analyzing security headers${endColour}"
-for targetSite in $(cat Pentest_${NAME}/urls.lst ); do 
+for targetSite in $(cat Pentest_${NAME}/urls.lst ); 
+do 
     siteEncoded=$(python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))" $targetSite)
     command="gowitness single ${siteEncoded}"
     eval "${command}"
@@ -74,13 +75,15 @@ if [ ! -d "${FILE_SUBDOMAINS}" ]; then
     run_cmd "mkdir ${FILE_SUBDOMAINS}"
 fi
 
-for d in $(cat Pentest_${NAME}/autonmap_${NAME}/*.xml); do 
+for d in $(cat Pentest_${NAME}/autonmap_${NAME}/*.xml); 
+do 
     gowitness nmap --file $d --service http --service https
     gowitness nmap --file $d --no-http
 done 
 
 i=1
-for d in $(cat Pentest_${NAME}/targets/urls.xml Pentest_${NAME}/targets/domains.xml Pentest_${NAME}/targets/Subdomains); do 
+for d in $(cat Pentest_${NAME}/targets/urls.xml Pentest_${NAME}/targets/domains.xml Pentest_${NAME}/targets/Subdomains); 
+do 
     gowitness single -o Captura_${i}.png $d
     ((i=i+1))
 done 

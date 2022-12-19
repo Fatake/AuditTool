@@ -2,16 +2,17 @@
 
 ![](assets/2022-07-28_20-39.png)
 
-## Function
+## Functions
 
-Audit Tool are mainly bash scripts to automate repetitive tasks dunring a pentest.You could be able to make:
+Audit Tool are mainly bash scripts to automate repetitive tasks dunring a pentest.
+You could be able to make:
 
-- Burp project
-- A DNS analysis with tools like **dnsrecon**, **dig**, **subfinder**, **assetfinder** and **amass**
-- A Nessus scan
-- Transofrm hosts into IPv4 or IPv6 addresses
 - Test security headers
+- Transofrm hosts into IPv4 or IPv6 addresses
 - Scan ports and services with **Nmap**
+- A Nessus scan
+- A DNS analysis with tools like **dnsrecon**, **dig**, **subfinder**, **assetfinder** and **amass**
+- Create New Burp project
 - Take screenshots from a list of URLs with **GoWitness**
 
 ## Usage

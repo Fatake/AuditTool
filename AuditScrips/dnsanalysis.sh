@@ -3,7 +3,9 @@
     #    -d [domainTarget] -t [std|axfr|zonewalk|bing] -c [outputFiel].csv
     #dnsrecon -d [IP] -t rvl -c [outputfile].cvs
     #dig
-
+    # to do dnsenum
+    # to do fierce
+    # to do dnsmap
 # <----------------------- dnsrecon space ----------------------->
 echo -e "\n${yellowColour}Starting ${purpleColour}dnsrecon${endColour}"
 TOOL_PATH="$(pwd)/Pentest_${NAME}/dnsrecon"

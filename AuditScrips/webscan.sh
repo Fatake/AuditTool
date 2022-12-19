@@ -11,8 +11,16 @@ if [ ! -d "${TOOL_PATH}" ]; then
     run_cmd "mkdir ${TOOL_PATH}"
 fi
 
-for d in $(cat Pentest_${NAME}/targets/domains.txt); do 
-    whatweb --log-xml ${TOOL_PATH}/out_${d}.xml -v -a 3 $d
+i=1
+WW_USERAGENT='--user-agent "Mozilla/5.0 \(Windows NT 10.0; rv:100.0\) Gecko/20100101 Firefox/100.0"'
+for d in $(cat Pentest_${NAME}/targets/domains.txt); 
+do
+    OPFILE="--log-verbose ${TOOL_PATH}/out_${d}_${i}"
+    COMMAND="whatweb $WW_USERAGENT -v -a 3 ${OPFILE} $d"
+    echo -e "kali$ ${COMMAND}"
+    echo -e "<------------------------------->\n";
+    eval $COMMAND
+    ((i=i+1))
 done 
 
 ##

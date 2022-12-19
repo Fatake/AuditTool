@@ -1,5 +1,5 @@
 #!/bin/bash
-. /opt/AuditTool/AuditScrips/utils.sh
+
 ##Starting Burp
 echo -e "${greenColour}[*]${endColour} Starting burp Project ${yellowColour}$NAME-project.burp${endColour}"
 TOOL_PATH="$(pwd)/Pentest_${NAME}/BurpSuitePro"

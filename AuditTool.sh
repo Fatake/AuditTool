@@ -1,5 +1,5 @@
 #!/bin/bash
-. /opt/AuditTool/AuditScrips/utils.sh
+source /opt/AuditTool/AuditScrips/utils.sh
 
 logo
 

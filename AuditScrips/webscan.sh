@@ -2,7 +2,7 @@
 . /opt/AuditTool/AuditScrips/utils.sh
 
 ##
-## What WEb
+## What Web
 ##
 echo -e "\n${yellowColour}Starting ${purpleColour}whatweb${endColour}"
 TOOL_PATH="$(pwd)/Pentest_${NAME}/whatweb"

@@ -7,8 +7,7 @@ echo -e "\n${yellowColour}Starting ${purpleColour}auto nmap${endColour}"
 if [ ! -d "${PROJECT_PATH}/autonmap" ]; then
     COMMAND="git clone --recursive https://github.com/Fatake/autonmap.git"
     echo -e "${blueColour}[*]${endColour}Dowloading ${purpleColour}${COMMAND}${endColour}"
-    run_cmd "${COMMAND}"
-    run_cmd "chown -R 1000:1000 {PROJECT_PATH}/autonmap/"
+    run_cmd "${COMMAND} && chown -R 1000:1000 ${PROJECT_PATH}/autonmap/"
 fi
 
 sudo ./autonmap/autonmap.sh -o "${NAME}" -t "-iL ${PROJECT_PATH}/Pentest_${NAME}/targets/allipaddreses.txt"

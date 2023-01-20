@@ -16,7 +16,9 @@ You could be able to make:
 - Take screenshots from a list of URLs with **GoWitness**
 
 ## Onliner Install
-curl https://gist.githubusercontent.com/.../raw/install.sh | sudo bash
+```bash
+https://raw.githubusercontent.com/Fatake/AuditTool/master/install.sh | sudo bash
+```
 
 ## Usage
 

@@ -17,7 +17,7 @@ You could be able to make:
 
 ## Onliner Install
 ```bash
-https://raw.githubusercontent.com/Fatake/AuditTool/master/install.sh | sudo bash
+curl https://raw.githubusercontent.com/Fatake/AuditTool/master/install.sh | sudo bash
 ```
 
 ## Usage

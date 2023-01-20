@@ -59,7 +59,9 @@ do
     eval "${command}"
 done 
 
-
+##
+## Web Screenshots
+##
 echo -e "${greenColour}\n[*] Taking screenshots of HTTP Services${endColour}"
 
 ## Making files

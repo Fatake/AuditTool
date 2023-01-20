@@ -15,6 +15,9 @@ You could be able to make:
 - Create New Burp project
 - Take screenshots from a list of URLs with **GoWitness**
 
+## Onliner Install
+curl https://gist.githubusercontent.com/.../raw/install.sh | sudo bash
+
 ## Usage
 
 Clone github repository

@@ -3,14 +3,14 @@ source /opt/AuditTool/AuditScrips/utils.sh
 
 logo
 
-if [ "$EUID" -ne 0 ] ; then
-	echo -e "\n${redColour}[!]${endColour} Not sudo detected";
-	usage
-	exit 1
+sudoCheck
+if [[ $IsSudo == 1 ]] then
+	usage;
+    exit 1;
 fi
 
 if [[ ${#} -eq 0 ]]; then
-	usage
+	usage;
 	exit 1
 fi
 

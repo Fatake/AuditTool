@@ -48,7 +48,7 @@ function makeDirTool(){
 # 2>/dev/null redirect standar error to /dev/null
 function listTargets () {
     echo -e "\n${yellowColour}Domains${endColour}"
-    run_cmd "cat Pentest_${NAME}/targets/domains.txt"
+    run_cmd "cat Pentest_${NAME}/targets/domains.txt"/opt/AuditToo
 
     echo -e "\n${yellowColour}Subdomains${endColour}"
     run_cmd "cat Pentest_${NAME}/targets/subdomains.txt"
@@ -58,6 +58,16 @@ function listTargets () {
 
     echo -e "\n${yellowColour}URLS${endColour}"
     run_cmd "cat Pentest_${NAME}/targets/urls.txt"
+}
+
+function sudoCheck(){
+    if [ "$EUID" -ne 0 ] ; then
+        echo -e "\n${redColour}[!]${endColour} Not sudo detected";
+        IsSudo=1;
+        return 1;
+    fi
+    IsSudo=0;
+    return 0;
 }
 
 function checkFiles(){

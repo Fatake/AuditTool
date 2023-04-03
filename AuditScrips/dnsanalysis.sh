@@ -1,8 +1,7 @@
 #!/bin/bash
 #  Inportart Commands Used
     #    -d [domainTarget] -t [std|axfr|zonewalk|bing] -c [outputFiel].csv
-    #dnsrecon -d [IP] -t rvl -c [outputfile].cvs
-    #dig
+    # dnsrecon -d [IP] -t rvl -c [outputfile].cvs
     # to do dnsenum
     # to do fierce
     # to do dnsmap
@@ -66,7 +65,7 @@ echo -e "\n${yellowColour}Starting ${purpleColour}amass, subfinder${endColour}"
 for d in $(cat Pentest_${NAME}/targets/domains.txt); do 
     subfinder -d $d >> Pentest_${NAME}/foundsubdomains.txt
     assetfinder -subs-only $d >> Pentest_${NAME}/foundsubdomains.txt
-    amass enum -norecursive -noalts -d $d >> Pentest_${NAME}/foundsubdomains.txt
+    amass enum -d $d -config /opt/AuditTool/ConfigUtils/amass.conf -o Pentest_${NAME}/ammas_output_$d.txt >> Pentest_${NAME}/foundsubdomains.txt
 done 
 
 # <----------------------- DNS Brute ----------------------->

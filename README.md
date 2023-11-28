@@ -1,6 +1,5 @@
 # Audit Tool
 
-![](assets/2022-07-28_20-39.png)
 
 ## Functions
 

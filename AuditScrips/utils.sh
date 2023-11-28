@@ -27,8 +27,6 @@ function logo () {
     echo -e "${endColour}\n"
 
     echo -e "Made with love by:"
-    echo -e "${greenColour}[+]${endColour} @cthulhu897"
-    echo -e "${greenColour}[+]${endColour} @rossJxd"
     echo -e "${greenColour}[+]${endColour} @Fatake"
 }
 

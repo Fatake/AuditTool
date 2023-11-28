@@ -45,6 +45,9 @@ listTargets
 
 echo -e "\n${yellowColour}<------------ Let's Pentest ------------>${endColour}"
 
+##
+# Prepare all Items
+##
 . /opt/AuditTool/AuditScrips/scope.sh
 
 ##
